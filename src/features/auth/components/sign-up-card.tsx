@@ -27,6 +27,7 @@ import {
     FormItem,
     FormMessage,
 } from "@/components/ui/form";
+import Link from "next/link";
 
 
 const formSchema = z.object({
@@ -159,6 +160,20 @@ export const SingUpCard = () =>{
                     Login with Github
                 </Button>
 
+            </CardContent>
+
+            <div className="px-7">
+                <Separator/>
+            </div>
+
+            <CardContent>
+                <div className="flex items-center justify-center py-7 ">
+                <p>Don&apos;t have an accout? 
+                        <Link href= "sign-in">
+                            <span className = "text-blue-700"> Sign in </span>
+                        </Link>
+                </p>
+                </div>
             </CardContent>
            
             

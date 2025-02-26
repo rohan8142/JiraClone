@@ -27,6 +27,10 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 
+//next features
+
+import Link from "next/link";
+
 const formSchema = z.object({
     email: z.string().email(),
     password: z.string().min(1,"Required")
@@ -129,6 +133,20 @@ export const SingInCard = () =>{
                     Login with Github
                 </Button>
 
+            </CardContent>
+
+            <div className="px-7">
+                <Separator/>
+            </div>
+
+            <CardContent>
+                <div className="flex items-center justify-center p-7 ">
+                <p>Don&apos;t have an accout? 
+                        <Link href= "sign-up">
+                            <span className = "text-blue-700"> Sign up </span>
+                        </Link>
+                </p>
+                </div>
             </CardContent>
            
             
