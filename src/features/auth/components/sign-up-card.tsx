@@ -28,32 +28,23 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
-
-
-const formSchema = z.object({
-
-    name : z.string().min(2, "Please Enter a valid name"),
-    email: z.string().email(),
-    password: z.string().min(6,"Please enter minimum of 6 characters")
-})
-
-
-
+// schema import from schemas folder
+import { signUpSchema } from "../schemas";
+import { useRegister } from "../api/use-register";
 
 export const SingUpCard = () =>{
-
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const {mutate} = useRegister();
+    const form = useForm<z.infer<typeof signUpSchema>>({
+        resolver: zodResolver(signUpSchema),
         defaultValues:{
             name: "",
             email: "",
             password: "",
-        }
-    })
+    }})
 
-    const onSubmit = (values:z.infer<typeof formSchema>) =>{
-        console.log(values);
-    }
+    const onSubmit = (values: z.infer<typeof signUpSchema>) =>{
+            mutate({json:values});
+        };
 
 
 
